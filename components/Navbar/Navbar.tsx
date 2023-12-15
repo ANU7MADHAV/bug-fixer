@@ -4,6 +4,7 @@ import icon from "@/public/assets/icon-bug.png";
 import { SignedIn, UserButton } from "@clerk/nextjs";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import MobileNav from "./MobileNav";
+import GlobalSearch from "./GlobalSearch";
 
 const Navbar = () => {
   return (
@@ -15,8 +16,10 @@ const Navbar = () => {
           Bug <span className="text-primary-500">Helper</span>
         </p>
       </Link>
-      Global search
       <div>
+        <GlobalSearch />
+      </div>
+      <div className="flex-between gap-x-10 ">
         <ThemeSwitcher />
         <SignedIn>
           <UserButton afterSignOutUrl="/" />
