@@ -5,6 +5,8 @@ import "./globals.css";
 import React from "react";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Providers } from "@/components/Provider";
+import { Theme } from "@radix-ui/themes";
+import "@radix-ui/themes/styles.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -41,7 +43,9 @@ export default function RootLayout({
     >
       <html lang="en">
         <body className={`${inter.variable}${spaceGrotesk.variable}`}>
-          <Providers>{children}</Providers>
+          <Theme>
+            <Providers>{children}</Providers>
+          </Theme>
         </body>
       </html>
     </ClerkProvider>
