@@ -21,10 +21,10 @@ const NavContent = () => {
   // const active = sidebarLinks.find((link) => link.label === params);
 
   return (
-    <section className="my-4 flex flex-col gap-y-2 pl-2 text-left font-spaceGrotesk">
+    <section className="my-4 flex flex-col gap-y-4 pl-2 text-left font-spaceGrotesk font-semibold">
       {sidebarLinks.map((link) => (
         <Link key={link.label} href={link.route}>
-          <p className="hover:primary-gradient rounded-lg px-2 transition ease-in-out hover:scale-105">
+          <p className="hover:primary-gradient cursor-pointer rounded-lg px-2 transition ease-in-out hover:scale-105">
             {link.label}
           </p>
         </Link>
@@ -65,11 +65,13 @@ const MobileNav = () => {
             </SignedOut>
           </SheetClose>
           <SheetClose asChild>
-            <Link href="/sign-out">
-              <Button className="min-h-[41px] w-full rounded-lg px-4 py-3 font-spaceGrotesk">
-                <span className="primary-text-gradient">Sign Up</span>
-              </Button>
-            </Link>
+            <SignedOut>
+              <Link href="/sign-up">
+                <Button className="min-h-[41px] w-full rounded-lg px-4 py-3 font-spaceGrotesk">
+                  <span className="primary-text-gradient">Sign Up</span>
+                </Button>
+              </Link>
+            </SignedOut>
           </SheetClose>
         </div>
       </SheetContent>
