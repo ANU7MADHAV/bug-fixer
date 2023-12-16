@@ -1,5 +1,4 @@
 import { SidebarLink } from "@/types";
-import { IoBag } from "react-icons/io5";
 
 export const sidebarLinks: SidebarLink[] = [
   {
