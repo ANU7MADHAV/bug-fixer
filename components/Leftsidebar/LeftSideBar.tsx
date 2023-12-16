@@ -21,17 +21,17 @@ const LeftSideBar = () => {
           ))}
         </ul>
       </div>
-      <div>
+      <div className="mb-4 flex flex-col gap-2">
         <SignedOut>
           <Link href="/sign-in">
-            <Button className="min-h-[41px] w-full rounded-lg px-4 py-3 font-spaceGrotesk">
+            <Button className="btn min-h-[41px] w-full rounded-lg px-4 py-3 font-spaceGrotesk">
               Log In
             </Button>
           </Link>
         </SignedOut>
         <SignedOut>
           <Link href="/sign-up">
-            <Button className="min-h-[41px] w-full rounded-lg px-4 py-3 font-spaceGrotesk">
+            <Button className="primary-gradient hidden min-h-[41px] w-full rounded-lg px-4 py-3 font-spaceGrotesk sm:block">
               Sign up
             </Button>
           </Link>

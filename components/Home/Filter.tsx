@@ -21,7 +21,7 @@ const Filter = ({ otherClasses, filters, containerClasses }: Props) => {
   return (
     <div className="block lg:hidden">
       <Select>
-        <SelectTrigger className="w-[180px]">
+        <SelectTrigger className="w-[120px] px-2 sm:w-[180px]">
           <SelectValue placeholder="Select Filter" />
         </SelectTrigger>
         <SelectContent>

@@ -16,7 +16,7 @@ export default function Home() {
           </button>
         </Link>
       </div>
-      <div className="mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center">
+      <div className="mt-11 flex justify-between gap-5 max-sm:flex-row sm:w-full sm:items-center sm:gap-0">
         <LocalSearchbar
           otherClasses={""}
           placeholder={"Local search"}
