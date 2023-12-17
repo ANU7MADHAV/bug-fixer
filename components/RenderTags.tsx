@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 interface Props {
   id: number;
   name: string;
-  totalQuestions: number;
+  totalQuestions?: number;
 }
 
 const RenderTags = ({ id, name, totalQuestions }: Props) => {
