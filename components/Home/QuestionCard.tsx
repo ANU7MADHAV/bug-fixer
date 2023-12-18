@@ -1,5 +1,9 @@
 import Link from "next/link";
+import { SlLike } from "react-icons/sl";
+import { IoEyeOutline } from "react-icons/io5";
+import { RiQuestionAnswerLine } from "react-icons/ri";
 import RenderTags from "../RenderTags";
+import Metric from "../Metric";
 
 interface Props {
   id: number;
@@ -30,8 +34,8 @@ const QuestionCard = ({
 }: Props) => {
   return (
     <div className=" mt-7 rounded-[10px] border-none bg-light-850 p-9 text-black shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] ">
-      <div className="flex flex-col-reverse justify-between gap-5 sm:flex-row">
-        <span className=" flex sm:hidden">{String(createdAt)}</span>
+      <div className="flex flex-col justify-between gap-5 sm:flex-row-reverse">
+        <span className=" ">{String(createdAt)}</span>
         <Link href={`/question/${id}`}>
           <h3 className="h3-bold line-clamp-1 flex-1 ">{title}</h3>
         </Link>
@@ -40,6 +44,16 @@ const QuestionCard = ({
         {tags.map((tag) => (
           <RenderTags key={tag._id} id={tag._id} name={tag.name} />
         ))}
+      </div>
+      <div className="mt-10 flex w-full justify-between">
+        <div>
+          <p>{author.name}</p>
+        </div>
+        <div className="flex gap-2">
+          <Metric img={<SlLike />} value={upvotes} />
+          <Metric img={<IoEyeOutline />} value={views} />
+          <Metric img={<RiQuestionAnswerLine />} value={answers} />
+        </div>
       </div>
     </div>
   );
