@@ -20,16 +20,13 @@ import { Input } from "@/components/ui/input";
 import { formSchema } from "@/lib/validation";
 import { Badge } from "@/components/ui/badge";
 
-import React, { useRef } from "react";
-
-function onSubmit(values: z.infer<typeof formSchema>) {
-  // Do something with the form values.
-  // ✅ This will be type-safe and validated.
-  console.log(values);
-}
+import React, { useRef, useState } from "react";
 
 export default function Question() {
   const editorRef = useRef(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const type: any = "create";
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -39,6 +36,11 @@ export default function Question() {
       tags: [],
     },
   });
+
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsSubmitting(true);
+    console.log(values);
+  }
 
   const handleKeyDown = (
     e: React.KeyboardEvent<HTMLInputElement>,
@@ -194,8 +196,13 @@ export default function Question() {
           <Button
             type="submit"
             className="primary-gradient w-fit !text-light-900"
+            disabled={isSubmitting}
           >
-            Submit
+            {isSubmitting ? (
+              <>{type === "Edit" ? "Editing..." : "Posting..."}</>
+            ) : (
+              <>{type === "Edit" ? "Edit Question" : "Ask a Question"}</>
+            )}
           </Button>
         </form>
       </Form>
