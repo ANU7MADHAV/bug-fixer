@@ -4,6 +4,7 @@ import { IoEyeOutline } from "react-icons/io5";
 import { RiQuestionAnswerLine } from "react-icons/ri";
 import RenderTags from "../RenderTags";
 import Metric from "../Metric";
+import { timeAgo } from "@/lib/utils";
 
 interface Props {
   id: number;
@@ -35,7 +36,7 @@ const QuestionCard = ({
   return (
     <div className=" mt-7 rounded-[10px] border-none bg-light-850 p-9 text-black shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] ">
       <div className="flex flex-col justify-between gap-5 sm:flex-row-reverse">
-        <span className=" ">{String(createdAt)}</span>
+        <span className=" ">{timeAgo(createdAt)}</span>
         <Link href={`/question/${id}`}>
           <h3 className="h3-bold line-clamp-1 flex-1 ">{title}</h3>
         </Link>
