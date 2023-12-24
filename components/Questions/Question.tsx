@@ -21,6 +21,7 @@ import { formSchema } from "@/lib/validation";
 import { Badge } from "@/components/ui/badge";
 
 import React, { useRef, useState } from "react";
+import { createQuestion } from "@/lib/actions/question.action";
 
 export default function Question() {
   const editorRef = useRef(null);
@@ -37,9 +38,16 @@ export default function Question() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
-    console.log(values);
+
+    try {
+      await createQuestion({});
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   const handleKeyDown = (
@@ -115,7 +123,9 @@ export default function Question() {
                         // @ts-ignore
                         (editorRef.current = editor)
                       }
-                      initialValue="<p>This is the initial content of the editor.</p>"
+                      onBlur={field.onBlur}
+                      onEditorChange={(content) => field.onChange(content)}
+                      initialValue=""
                       init={{
                         height: 500,
                         menubar: false,
