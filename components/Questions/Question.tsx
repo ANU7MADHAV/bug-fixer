@@ -22,10 +22,16 @@ import { Badge } from "@/components/ui/badge";
 
 import React, { useRef, useState } from "react";
 import { createQuestion } from "@/lib/actions/question.action";
+import { useRouter } from "next/navigation";
 
-export default function Question() {
+interface Prop {
+  mongoUserId: string;
+}
+
+export default function Question({ mongoUserId }: Prop) {
   const editorRef = useRef(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const router = useRouter();
 
   const type: any = "create";
 
@@ -42,7 +48,14 @@ export default function Question() {
     setIsSubmitting(true);
 
     try {
-      await createQuestion({});
+      await createQuestion({
+        title: values.title,
+        content: values.explanation,
+        tags: values.tags,
+        author: JSON.parse(mongoUserId),
+      });
+
+      router.push("/");
     } catch (error) {
       console.log(error);
     } finally {
